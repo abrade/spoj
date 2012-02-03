@@ -1,0 +1,39 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+01234
+43212
+  2
+
+
+12234
+12321
+
+99999
+100001
+
+607
+616
+
+
+923
+929
+
+Fall1:
+links > rechts
+87 32 : setze links = rechts
+ 7 7
+87 78
+
+85 3 22
+   3 
+ 5 3 5
+85 3 58
+
+Fall2:
+rechts > links
+
+14 78
+ 5 5 : setze zuerst links = rechts und danach wie fall1
+15 51
