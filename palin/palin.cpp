@@ -22,25 +22,31 @@ string getNextPalin(const string & input)
    int left = aToI(input[indexLeft]);
    int right = aToI(input[indexRight]);
    
-   string result = input;
+   string result(input);
+
    if(left > right)
    {
       result[indexRight] = input[indexLeft];
    }
-   else
+   else if(left < right)
    {
+      cout << " left < righ ; " << left << " < " << right << endl;
       left++;
-      result[indexLeft] = left;
+      result[indexLeft] = char(left + 0x30);
+      result[indexRight] = char(left + 0x30);
    }
    
-
-   while(indexLeft > 0 && indexRight < input.size())
+   // indexLeft--;
+   // indexRight++;
+   
+   while(indexLeft >= 0 && indexRight < input.size())
    {
-      left = aToI(input[indexLeft--]);
-      right = aToI(input[indexRight++]);
-      
+      result[indexRight++] = result[indexLeft--];
+      if(indexRight == input.size())
+      {
+         indexRight--;
+      }
    }
-
    return result;
 }
 
