@@ -2,21 +2,22 @@
 #include <iomanip>
 #include <sstream>
 
-int calcAdd(int operand1, int operand2)
+unsigned int calcAdd(unsigned int operand1, unsigned int operand2)
 {
    return operand1 + operand2;
 }
-int calcSub(int operand1, int operand2)
+
+unsigned int calcSub(unsigned int operand1, unsigned int operand2)
 {
    return operand1 - operand2;
 }
 
-int calcMul(int operand1, int operand2)
+unsigned int calcMul(unsigned int operand1, unsigned int operand2)
 {
    return operand1 * operand2;
 }
 
-int calcDiv(int operand1, int operand2)
+unsigned int calcDiv(unsigned int operand1, unsigned int operand2)
 {
    return operand1 / operand2;
 }
@@ -24,12 +25,12 @@ int calcDiv(int operand1, int operand2)
 int convertToInt(const std::string& value)
 {
    std::stringstream converter(value);
-   int convertedToInt;
+   unsigned int convertedToInt;
    converter >> convertedToInt;
    return convertedToInt;
 }
 
-typedef int(*operation)(int,int);
+typedef unsigned int(*operation)(unsigned int,unsigned int);
 
 bool isOperator(const char& operatorChar)
 {
@@ -55,24 +56,24 @@ operation getOperationFor(const char& operatorChar)
 
 }
 
-int calculate(int operand1, int operand2, operation op)
+unsigned int calculate(unsigned int operand1, unsigned int operand2, operation op)
 {
    return op(operand1, operand2);
 }
 
 
-int getCountIntegeres(int value)
+int getCountIntegeres(unsigned int value)
 {
    std::stringstream ss;
    ss << value;
    return ss.str().length();
 }
 
-int getMaxLength(const std::string& op1, const std::string& op2, int result)
+int getMaxLength(const std::string& op1, const std::string& op2, unsigned int result)
 {
    int resultLength = getCountIntegeres(result);
    int firstMax = std::max(op1.length(), op2.length());
-   return std::max(firstMax, resultLength) +1;
+   return std::max(firstMax, resultLength);
 }
 
 void calc(const std::string& toCalculate)
@@ -97,31 +98,37 @@ void calc(const std::string& toCalculate)
       return;
    }
    
-   std::cout << " -> " << operand1 << " " << operatorType << " " << operand2 << std::endl;
-   int op1, op2;
+   unsigned int op1, op2;
    op1 = convertToInt(operand1);
    op2 = convertToInt(operand2);
    int result = calculate(op1, op2, getOperationFor(operatorType));
 
-   int maxLength = getMaxLength(operand1, operand2, result);
-
+   const std::string opAndop2 = operatorType + operand2;
+   int maxLength = getMaxLength(operand1, opAndop2, result);
    std::cout << std::setw(maxLength) << std::setfill(' ') << operand1 << std::endl;
-   std::cout << std::setw(maxLength) << std::setfill(' ') << operatorType << operand2 << std::endl;
-   std::cout << std::setw(maxLength) << std::setfill('-') << "";
-   if(operatorType == '*')
+   std::cout << std::setw(maxLength) << std::setfill(' ') << opAndop2 << std::endl;
+   if(operatorType == '*' && operand2.length() > 1)
    {
+      int currentMaxLength = std::max(operand1.length(), opAndop2.length());
+      std::cout << std::setw(maxLength-currentMaxLength) << std::setfill(' ') << "" << std::setw(currentMaxLength) << std::setfill('-') << "";
       std::cout << std::endl;
+      int count = 0;
       for(int i = (operand2.length() - 1) ; i >=0; i--)
       {
          std::string current = &operand2[i];
-         int value = convertToInt(current);
-         int mulResult = calculate(op1, value, getOperationFor(operatorType));
-         
-         std::cout << mulResult << std::endl;
+         current = current[0];
+         unsigned int value = convertToInt(current);
+         unsigned int mulResult = calculate(op1, value, getOperationFor(operatorType));
+         std::cout << std::setw(maxLength - (count++)) << std::setfill(' ') << mulResult << std::endl;
       }
+      std::cout << std::setw(maxLength) << std::setfill('-') << "";
+   }
+   else
+   {
+      std::cout << std::setw(maxLength) << std::setfill('-') << "";
    }
 
-   std::cout << std::endl << result << std::endl;
+   std::cout << std::endl << std::setw(maxLength) << std::setfill(' ') <<  result << std::endl;
 }
 
 int main(int argc, char** argv)
@@ -138,9 +145,11 @@ int main(int argc, char** argv)
       arithm[i] = currentTestCase;
    }
    
+   std::cout << std::endl;
    for(int i = 0; i < testCases; i++)
    {
       calc(arithm[i]);
+      std::cout << std::endl;
    }
 
    return 0;
