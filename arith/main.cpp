@@ -2,35 +2,35 @@
 #include <iomanip>
 #include <sstream>
 
-unsigned int calcAdd(unsigned int operand1, unsigned int operand2)
+unsigned long calcAdd(unsigned long operand1, unsigned long operand2)
 {
    return operand1 + operand2;
 }
 
-unsigned int calcSub(unsigned int operand1, unsigned int operand2)
+unsigned long calcSub(unsigned long operand1, unsigned long operand2)
 {
    return operand1 - operand2;
 }
 
-unsigned int calcMul(unsigned int operand1, unsigned int operand2)
+unsigned long calcMul(unsigned long operand1, unsigned long operand2)
 {
    return operand1 * operand2;
 }
 
-unsigned int calcDiv(unsigned int operand1, unsigned int operand2)
+unsigned long calcDiv(unsigned long operand1, unsigned long operand2)
 {
    return operand1 / operand2;
 }
 
-int convertToInt(const std::string& value)
+unsigned long convertToInt(const std::string& value)
 {
    std::stringstream converter(value);
-   unsigned int convertedToInt;
+   unsigned long convertedToInt;
    converter >> convertedToInt;
    return convertedToInt;
 }
 
-typedef unsigned int(*operation)(unsigned int,unsigned int);
+typedef unsigned long(*operation)(unsigned long,unsigned long);
 
 bool isOperator(const char& operatorChar)
 {
@@ -69,7 +69,7 @@ int getCountIntegeres(unsigned int value)
    return ss.str().length();
 }
 
-int getMaxLength(const std::string& op1, const std::string& op2, unsigned int result)
+int getMaxLength(const std::string& op1, const std::string& op2, unsigned long result)
 {
    int resultLength = getCountIntegeres(result);
    int firstMax = std::max(op1.length(), op2.length());
@@ -98,10 +98,10 @@ void calc(const std::string& toCalculate)
       return;
    }
    
-   unsigned int op1, op2;
+   unsigned long op1, op2;
    op1 = convertToInt(operand1);
    op2 = convertToInt(operand2);
-   int result = calculate(op1, op2, getOperationFor(operatorType));
+   long result = calculate(op1, op2, getOperationFor(operatorType));
 
    const std::string opAndop2 = operatorType + operand2;
    int maxLength = getMaxLength(operand1, opAndop2, result);
@@ -117,8 +117,8 @@ void calc(const std::string& toCalculate)
       {
          std::string current = &operand2[i];
          current = current[0];
-         unsigned int value = convertToInt(current);
-         unsigned int mulResult = calculate(op1, value, getOperationFor(operatorType));
+         unsigned long value = convertToInt(current);
+         unsigned long mulResult = calculate(op1, value, getOperationFor(operatorType));
          std::cout << std::setw(maxLength - (count++)) << std::setfill(' ') << mulResult << std::endl;
       }
       std::cout << std::setw(maxLength) << std::setfill('-') << "";
