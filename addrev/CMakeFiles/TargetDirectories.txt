@@ -1,1 +1,0 @@
-/home/alex/spoj/addrev/CMakeFiles/addrev.dir
