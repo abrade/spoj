@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named c_toandfro
+
+# Build rule for target.
+c_toandfro: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 c_toandfro
+.PHONY : c_toandfro
+
+# fast build rule for target.
+c_toandfro/fast:
+	$(MAKE) -f CMakeFiles/c_toandfro.dir/build.make CMakeFiles/c_toandfro.dir/build
+.PHONY : c_toandfro/fast
+
+#=============================================================================
 # Target rules for targets named toandfro
 
 # Build rule for target.
@@ -110,6 +123,30 @@ toandfro: cmake_check_build_system
 toandfro/fast:
 	$(MAKE) -f CMakeFiles/toandfro.dir/build.make CMakeFiles/toandfro.dir/build
 .PHONY : toandfro/fast
+
+main.o: main.c.o
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	$(MAKE) -f CMakeFiles/c_toandfro.dir/build.make CMakeFiles/c_toandfro.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) -f CMakeFiles/c_toandfro.dir/build.make CMakeFiles/c_toandfro.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) -f CMakeFiles/c_toandfro.dir/build.make CMakeFiles/c_toandfro.dir/main.c.s
+.PHONY : main.c.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -141,9 +178,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... c_toandfro"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... toandfro"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

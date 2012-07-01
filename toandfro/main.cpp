@@ -53,7 +53,8 @@ int main(int argc, char** argv)
       }
       std::string cryptedText;
       std::cin >> cryptedText;
-
+      if(cryptedText.length() > 200)
+         cryptedText = cryptedText.substr(0, 200);
       Toandfro current = std::make_pair(pivot, cryptedText);
       toandfroList.push_back(current);
    }
