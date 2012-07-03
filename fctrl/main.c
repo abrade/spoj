@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 
 unsigned int traillingZeros(unsigned int num)
 {
@@ -15,14 +15,14 @@ unsigned int traillingZeros(unsigned int num)
 int main(int argc, char** argv)
 {
    int testCases;
-   
-   std::cin >> testCases;
+   int i;
+   scanf("%i",&testCases);
 
-   for(int i = 0; i < testCases; i++)
+   for(i = 0; i < testCases; i++)
    {
       unsigned int faktorial;
-      std::cin >> faktorial;
-      std::cout << traillingZeros(faktorial) << std::endl;
+      scanf("%i", &faktorial);
+      printf("%d\n", traillingZeros(faktorial));
    }
 
    return 0;
