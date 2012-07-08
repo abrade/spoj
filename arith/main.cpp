@@ -121,7 +121,7 @@ void calc(const std::string& toCalculate)
          unsigned long mulResult = calculate(op1, value, getOperationFor(operatorType));
          std::cout << std::setw(maxLength - (count++)) << std::setfill(' ') << mulResult << std::endl;
       }
-      std::cout << std::setw(maxLength) << std::setfill('-') << "";
+      std::cout << std::setw(getCountIntegeres(result)) << std::setfill('-') << "";
    }
    else
    {
