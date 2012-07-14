@@ -30,8 +30,8 @@ int main(int argc, char** argv)
       float halfApplesMoref = klaudiaMore/2.0;
       int halfApplesMore = ceil(halfApplesMoref);
 
-      klaudia = halfApples + halfApplesMore;
-      natalia = apples - klaudia;
+      klaudia = (apples + klaudiaMore) / 2;
+      natalia = (apples - klaudiaMore) / 2;
 //      natalia = halfApples - round(halfApplesMoref);
 //      klaudia = apples - natalia;
 
