@@ -11,6 +11,14 @@ int charToInt(char c)
    return atoi(p_c);
 }
 
+void doIt(char* palin, int pos1, int pos2)
+{
+   if(pos1 < 0)
+   {
+      
+   }
+}
+
 
 int main(int argc, char** argv)
 {
