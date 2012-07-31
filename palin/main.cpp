@@ -17,29 +17,41 @@ void doWork(std::vector<int>& palinVec, int pos1, int pos2)
 {
    if(pos1 < 0)
    {
+      // std::cerr << "pos1 < 0" << std::endl;
       palinVec.insert(palinVec.begin(), 1);
       palinVec[palinVec.size() - 1] = 1;
    }
-   else if(pos1 == 0)
-   {
-      palinVec[pos2] = palinVec[pos1];
-   }
+   // else if(pos1 == 0 && palinVec.size() > 2)
+   // {
+   //    // std::cerr << "pos1 == 0 && palinVec.size() > 2 " << std::endl;
+   //    palinVec[pos2] = palinVec[pos1];
+   // }
    else if(palinVec[pos1] < 9)
    {
-      if(palinVec[pos1] <= palinVec[pos2])
-      {
-         palinVec[pos1] = palinVec[pos2] = palinVec[pos1] + 1;
-      }
-      else if(palinVec[pos1] > palinVec[pos2])
-      {
-         palinVec[pos1] = palinVec[pos2];
-      }
+      // std::cerr << "palinVec[pos1] < 9" << std::endl;
+      palinVec[pos1] = palinVec[pos2] = palinVec[pos1] + 1;
    }
    else
    {
+      // std::cerr << "Else" << std::endl;
       palinVec[pos1] = palinVec[pos2] = 0;
       doWork(palinVec, pos1-1, pos2+1);
    }
+}
+
+bool checkDiff(const std::vector<int>& palinVec)
+{
+   int pos1, pos2;
+   pos1 = 0;
+   pos2 = palinVec.size() -1;
+   while(pos1 <= pos2)
+   {
+      if(palinVec[pos1++] != palinVec[pos2--])
+      {
+         return true;
+      }
+   }
+   return false;
 }
 
 int main(int argc, char** argv)
@@ -55,21 +67,26 @@ int main(int argc, char** argv)
       std::vector<int> palinVec = convertToVec(palin);
       int pos1, pos2;
       pos1 = pos2 = palinVec.size() / 2;
+      int mid = pos2;
       if(palinVec.size() % 2 == 0)
       {
          pos1--;
-         for(int j = 0; j < (palinVec.size() / 2); j++)
-         {
-            doWork(palinVec, pos1--, pos2++);
-         }
       }
       else
+         mid++;
+
+      for(int j = 0; j < mid; j++)
       {
-         for(int j = 0; j <= (palinVec.size() / 2); j++)
+         if(palinVec[pos1--] != palinVec[pos2++])
          {
-            doWork(palinVec, pos1--, pos2++);
+            doWork(palinVec, pos1, pos2);
          }
       }
+      // doWork(palinVec, pos1--, pos2++);      
+      // while(checkDiff(palinVec))
+      // {
+      //    doWork(palinVec, pos1--, pos2++);
+      // }
       for(int j = 0; j < palinVec.size(); j++)
       {
          std::cout << palinVec[j];

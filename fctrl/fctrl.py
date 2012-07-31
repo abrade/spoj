@@ -9,9 +9,8 @@ def traillingZeros(num):
     return z
 
 if __name__ == "__main__":
-    testcases = raw_input("")
-    for i in range(0, int(testcases)):
-        faktorial = raw_input("")
-        result = traillingZeros(int(faktorial))
-        print result
+    testcases = int(raw_input(""))
+    for i in range(0, testcases):
+        faktorial = int(raw_input(""))
+        print traillingZeros(faktorial)
             
