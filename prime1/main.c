@@ -5,8 +5,9 @@
 
 int main(int argc, char** argv)
 {
-   long long n;
-   while(scanf("%lld", &n) && n)
-      printf("%lld\n",n * (n+1) * (2*n+1) / 6);
+   int testCases;
+   
+   scanf("%i", &testCases);
+
    return 0;
 }
