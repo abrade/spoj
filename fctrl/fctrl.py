@@ -13,4 +13,3 @@ if __name__ == "__main__":
     for i in range(0, testcases):
         faktorial = int(raw_input(""))
         print traillingZeros(faktorial)
-            
