@@ -40,20 +40,25 @@ def calculate(arith):
         line = ""
         for i in range(0, opMaxLen):
             line += "-"
-        printValue(line, maxLen)
-        printMul(operand1, operand2, maxLen)
+        if op2len > 2:
+            printValue(line, maxLen)
+            printMul(operand1, operand2, maxLen)
 
     line = ""
     lastLineLen = maxLen
     if operator == '*':
         lastLineLen = len(str(result))
+        if op2len <= 2:
+            lastLineLen = maxLen
+        elif lastLineLen < op2len:
+            lastLineLen = op2len - 1
 
     for i in range(0, lastLineLen):
-        line += "-"    
+        line += "-"
     printValue(line, maxLen)
     printValue(str(result), maxLen)
     print ""
-    
+
 
 def getOperator(operator):
     return {
@@ -83,4 +88,3 @@ if __name__ == "__main__":
     for i in range(0, testcases):
         arith = raw_input("")
         calculate(arith)
-        
