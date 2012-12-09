@@ -1,0 +1,14 @@
+PROJECT(bitmap)
+
+INCLUDE(FindQt4)
+
+cmake_minimum_required(VERSION 2.6)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${QT_INCLUDE_DIR} ${QT_QTCORE_INCLUDE_DIR})
+
+ADD_EXECUTABLE(bitmap main.cpp)
+
+ADD_EXECUTABLE(testcases testcases.cpp)
+
+ADD_EXECUTABLE(new_bitmap bitmap.cpp)
+TARGET_LINK_LIBRARIES(new_bitmap ${QT_QTCORE_LIBRARY})
