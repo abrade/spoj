@@ -4,126 +4,159 @@
 #include <map>
 #include <cstdlib>
 #include <sstream>
-#include <QTime>
+#include <ctime>
 
 using namespace std;
 
 #define INVALID 1000000
+#define MAX_TRIES 2
+#define MAXVALUE 182
 
 typedef pair<int, int> Position;
+int rows, columns;
 
-int calcDistance(const Position startPos, const Position currentPos) {
+int result[MAXVALUE][MAXVALUE];
+
+int calcDistance(const Position& startPos, const Position& currentPos) {
    return (abs(startPos.first - currentPos.first) + abs(startPos.second - currentPos.second));
 }
 
-typedef set<Position> bitmap;
-bitmap values;
+//typedef set<Position> bitmap;
+// typedef vector<Position> bitmap;
+// bitmap values;
 
-int getDistance(const Position currentPos, const Position startPos) {
-   if(values.count(currentPos)) {
-      return calcDistance(startPos, currentPos);
-   }
-   int distance = INVALID;
-   for(bitmap::const_iterator iter = values.begin();
-       iter != values.end();
-       ++iter) {
-      distance = min(distance, calcDistance(startPos, (*iter)));
-      // if(distance == 1) {
-      //    return distance;
-      // }
-   }
-   int r = startPos.first;
-   int c = startPos.second;
-   int nearNeighbour = 1;
-   int minTimes = 0;
-   int oldDistanceValue;
-   while(distance == INVALID || minTimes < 3) {
-      Position up = make_pair(r-nearNeighbour, c);
-      Position upRight = make_pair(r-nearNeighbour,c+nearNeighbour);
-      Position right = make_pair(r, c+nearNeighbour);
-      Position downRight = make_pair(r+nearNeighbour,c+nearNeighbour);
-      Position down = make_pair(r+nearNeighbour,c);
-      Position downLeft = make_pair(r+nearNeighbour,c-nearNeighbour);
-      Position left = make_pair(r, c-nearNeighbour);
-      Position upLeft = make_pair(r-nearNeighbour,c-nearNeighbour);
+Position values[MAXVALUE*MAXVALUE];
+int valueCounter;
 
-      nearNeighbour++;
-      QTime vectorTime;
-      vectorTime.start();
-      vector<Position> currentPositions(8);
-
-      currentPositions.push_back(up);
-      currentPositions.push_back(upRight);
-      currentPositions.push_back(right);
-      currentPositions.push_back(downRight);
-      currentPositions.push_back(down);
-      currentPositions.push_back(downLeft);
-      currentPositions.push_back(left);
-      currentPositions.push_back(upLeft);
-
-      for(vector<Position>::const_iterator iter = currentPositions.begin();
-          iter != currentPositions.end();
-          ++iter) {
-         if(values.count(*iter)) {
-            distance = min(distance, calcDistance(startPos, (*iter)));
-            oldDistanceValue = distance;
+void calcDistance() {
+   for(int r = 0; r <rows; r++) {
+      for(int c = 0; c < columns; c++) {
+         // for(bitmap::iterator iter = values.begin();
+         //     iter != values.end();
+         //     ++iter) {
+         //    result[r][c] = min(result[r][c], calcDistance(make_pair(r,c), (*iter)));
+         // }
+         for(int i = 0; i < valueCounter; i++) {
+            result[r][c] = min(result[r][c], calcDistance(make_pair(r,c), values[i]));
          }
       }
-      std::cout << " --- " << vectorTime.elapsed() << " ---";
-      if(oldDistanceValue == distance) {
-         minTimes++;
-      }
-
-
    }
-
-   return distance;
 }
 
 int main(int argc, char** argv) {
-	int testCases;
+    int testCases;
 
-	cin >> testCases;
-	for(int i = 0; i < testCases; i++) {
-		int rows, columns;
-		cin >> rows;
-		cin >> columns;
+    cin >> testCases;
+    clock_t allTestCases = clock();
+    for(int i = 0; i < testCases; i++) {
+        cin >> rows;
+        cin >> columns;
+        valueCounter = 0;
+        for(int r = 0; r < rows; r++) {
+           char bitmap[columns+1];
+           cin >> bitmap;
+           bitmap[columns+1] = '\0';
 
-		char bitmap[rows][columns+1];
-		for(int j = 0; j < rows; j++) {
-			cin >> bitmap[j];
-			bitmap[j][columns+1] = '\0';
-		}
-		for(int r = 0; r < rows; r++) {
-			for(int c = 0; c < columns; c++) {
-				char current = bitmap[r][c];
-				int value = atoi(&current);
-				Position pos(r,c);
-                if(value)
-                   values.insert(pos);
-			}
-		}
-        QTime timeToStop;
-        timeToStop.start();
+           for(int c = 0; c < columns; c++) {
+              char current = bitmap[c];
+              int value = atoi(&current);
+              result[r][c] = INVALID;
+              if(value) {
+//                 values.insert(make_pair(r,c));
+//                 values.push_back(make_pair(r,c));
+                 values[valueCounter++] = make_pair(r,c);
+              }
+           }
+        }
+        // for(int r = 0; r < rows; r++) {
+        //    for(int c = 0; c < columns; c++) {
+        //       result[r][c] = INVALID;
+        //    }
+        // }
+//         for(int r = 0; r < rows; r++) {
+//            for(int c = 0; c < columns; c++) {
+// //              Position firstPos = make_pair(r,c);
+//               // std::cout << getDistance( firstPos, firstPos);
+//               std::cout << getDistance( make_pair(r,c), make_pair(r,c));
+//               if(c != (columns-1)) {
+//                 std::cout << " ";
+//               }
+
+//            }
+//           std::cout << std::endl;
+//         }
+//        std::cout << std::endl;
+//        values.clear();
+        calcDistance();
         for(int r = 0; r < rows; r++) {
            for(int c = 0; c < columns; c++) {
-              Position firstPos = make_pair(r,c);
-              QTime nextTime;
-              nextTime.start();
-              int distance = getDistance( firstPos, firstPos);
-//              std::cout << " GetDistance time: " << nextTime.elapsed() << std::endl;
-//              std::cout << distance;
+              std::cout << result[r][c];
               if(c != (columns-1)) {
-//                 std::cout << " ";
+                std::cout << " ";
               }
 
            }
-//           std::cout << std::endl;
+          std::cout << std::endl;
         }
-//        std::cout << std::endl;
-        values.clear();
-        std::cout << " Time needed: " << timeToStop.elapsed() << std::endl;
-	}
+       std::cout << std::endl;
+//       values.clear();
 
-	return 0;
+    }
+    // clock_t endAllTestCases = clock();
+    // double endAllTime = static_cast<double>(endAllTestCases - allTestCases) / CLOCKS_PER_SEC;
+    // std::cout << " Duration : " << endAllTime << std::endl;
+    return 0;
 }
+
+
+
+// int getDistance(const Position& currentPos, const Position& startPos) {
+//    if(values.count(currentPos)) {
+//       return calcDistance(startPos, currentPos);
+//    }
+//    int distance = INVALID;
+//    int r = startPos.first;
+//    int c = startPos.second;
+//    int nearNeighbour = 1;
+//    int minTimes = 0;
+//    int oldDistanceValue;
+
+//    while(distance == INVALID || minTimes < MAX_TRIES ) {
+//       Position up = make_pair(r-nearNeighbour, c);
+//       Position upRight = make_pair(r-nearNeighbour,c+nearNeighbour);
+//       Position right = make_pair(r, c+nearNeighbour);
+//       Position downRight = make_pair(r+nearNeighbour,c+nearNeighbour);
+//       Position down = make_pair(r+nearNeighbour,c);
+//       Position downLeft = make_pair(r+nearNeighbour,c-nearNeighbour);
+//       Position left = make_pair(r, c-nearNeighbour);
+//       Position upLeft = make_pair(r-nearNeighbour,c-nearNeighbour);
+
+//       nearNeighbour++;
+//       vector<Position> currentPositions(8);
+
+//       currentPositions.push_back(up);
+//       currentPositions.push_back(upRight);
+//       currentPositions.push_back(right);
+//       currentPositions.push_back(downRight);
+//       currentPositions.push_back(down);
+//       currentPositions.push_back(downLeft);
+//       currentPositions.push_back(left);
+//       currentPositions.push_back(upLeft);
+
+//       for(vector<Position>::const_iterator iter = currentPositions.begin();
+//           iter != currentPositions.end();
+//           ++iter) {
+//          if(values.count(*iter)) {
+//             distance = min(distance, calcDistance(startPos, (*iter)));
+//             oldDistanceValue = distance;
+//          }
+//       }
+//       if(oldDistanceValue == distance) {
+//          minTimes++;
+//       }
+
+
+//    }
+
+//    return distance;
+// }
