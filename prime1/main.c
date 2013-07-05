@@ -3,9 +3,11 @@
 #include <string.h>
 #include <math.h>
 
+unsigned long int *allPrimeValues;
+
+
 void calcPrime(unsigned long int min, unsigned long int max) {
    unsigned long int i, j;
-   unsigned long int *allPrimeValues = malloc(sizeof(unsigned long int) * max);
    memset(allPrimeValues, 0, sizeof(unsigned long int)* max);
    for(i = 1; i <= max; i++) {
       allPrimeValues[i] = i;
@@ -24,7 +26,6 @@ void calcPrime(unsigned long int min, unsigned long int max) {
          printf("%li\n", allPrimeValues[i]);
       }
    }
-   free( allPrimeValues);
 }
 
 int main(int argc, char** argv)
@@ -35,7 +36,9 @@ int main(int argc, char** argv)
    scanf("%i", &testCases);
    for(i = 0; i < testCases; i++) {
       scanf("%li %li", &min, &max);
+      allPrimeValues = malloc(sizeof(unsigned long int) * max);
       calcPrime(min, max);
+      free(allPrimeValues);
       printf("\n");
    }
    return 0;

@@ -1,0 +1,18 @@
+digraph G {
+ node [fontname=Verdana,fontsize=12]
+ node [style=filled]
+ node [fillcolor="#EEEEEE"]
+ node [color="#EEEEEE"]
+ edge [color="#31CEF0"]
+
+ gdanks -> bydgoszcz [label="1"]
+ gdanks -> torun [label="3"]
+ bydgoszcz -> gdanks [label="1"]
+ bydgoszcz -> torun [label="1"]
+ bydgoszcz -> warszawa [label="4"]
+ torun -> gdanks [label="3"]
+ torun -> bydgoszcz [label="1"]
+ torun -> warszawa [label="1"]
+ warszawa -> bydgoszcz [label="4"]
+ warszawa -> torun [label="1"]
+}
