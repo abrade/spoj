@@ -1,0 +1,2 @@
+/home/alex/spoj/CANTON/CMakeFiles/canton_c.dir
+/home/alex/spoj/CANTON/CMakeFiles/canton_cpp.dir

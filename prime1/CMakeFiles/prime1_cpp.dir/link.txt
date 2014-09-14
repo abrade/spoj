@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++   -g    CMakeFiles/prime1_cpp.dir/main.cpp.o  -o prime1_cpp -rdynamic 

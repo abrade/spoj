@@ -52,8 +52,8 @@ int calcDistance(const Position& startPos, const Position& currentPos) {
 int main(int argc, char** argv) {
    int t;
    scanf("%i",&t);
-//   std::queue<Position> nodes;
-   std::priority_queue<Position, std::vector<Position>, std::greater<Position> > nodes;
+   std::queue<Position> nodes;
+   // std::priority_queue<Position, std::vector<Position>, std::greater<Position> > nodes;
    for(int i = 0; i < t; i++) {
       scanf("%i %i", &r, &c);
       int result[r][c];
@@ -75,8 +75,8 @@ int main(int argc, char** argv) {
       }
 
       while(!nodes.empty()) {
-         // Position pos = nodes.front();
-         Position pos = nodes.top();
+         Position pos = nodes.front();
+         // Position pos = nodes.top();
          nodes.pop();
          Position curPos(pos.row + 1, pos.col);
          int distance = result[pos.row][pos.col] + 1;

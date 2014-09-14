@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/samer_c.dir/main.c.o  -o samer_c -rdynamic 

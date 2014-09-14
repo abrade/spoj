@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/samer_cpp.dir/main.cpp.o  -o samer_cpp -rdynamic 

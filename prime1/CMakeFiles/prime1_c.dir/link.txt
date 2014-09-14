@@ -1,0 +1,1 @@
+/usr/lib64/ccache/gcc  -g    CMakeFiles/prime1_c.dir/main.c.o  -o prime1_c -rdynamic -lm 

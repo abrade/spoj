@@ -1,0 +1,2 @@
+/home/alex/spoj/nsteps/CMakeFiles/nsteps_c.dir
+/home/alex/spoj/nsteps/CMakeFiles/nsteps_cpp.dir

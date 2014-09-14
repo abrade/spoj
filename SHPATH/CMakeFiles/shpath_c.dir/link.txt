@@ -1,0 +1,1 @@
+/usr/lib64/ccache/gcc  -g    CMakeFiles/shpath_c.dir/main.c.o  -o shpath_c -rdynamic 

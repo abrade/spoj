@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alex/spoj/SHPATH/main.cpp
+iostream
+-
+sstream
+-
+cstdio
+-
+cstring
+-
+map
+-
+set
+-
+climits
+-
+queue
+-
+

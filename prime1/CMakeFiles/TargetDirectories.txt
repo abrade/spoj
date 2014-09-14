@@ -1,0 +1,2 @@
+/home/alex/spoj/prime1/CMakeFiles/prime1_c.dir
+/home/alex/spoj/prime1/CMakeFiles/prime1_cpp.dir

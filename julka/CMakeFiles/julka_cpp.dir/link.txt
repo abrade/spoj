@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/julka_cpp.dir/main.cpp.o  -o julka_cpp -rdynamic 

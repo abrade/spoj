@@ -1,0 +1,5 @@
+/home/alex/spoj/bitmap/CMakeFiles/bitmap_c.dir
+/home/alex/spoj/bitmap/CMakeFiles/bitmap_cpp.dir
+/home/alex/spoj/bitmap/CMakeFiles/new_bitmap.dir
+/home/alex/spoj/bitmap/CMakeFiles/new_bitmap2.dir
+/home/alex/spoj/bitmap/CMakeFiles/testcases.dir

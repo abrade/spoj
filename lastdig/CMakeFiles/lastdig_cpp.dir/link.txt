@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++       CMakeFiles/lastdig_cpp.dir/main.cpp.o  -o lastdig_cpp -rdynamic 

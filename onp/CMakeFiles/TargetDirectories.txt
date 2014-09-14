@@ -1,0 +1,2 @@
+/home/alex/spoj/onp/CMakeFiles/onp_c.dir
+/home/alex/spoj/onp/CMakeFiles/onp_cpp.dir

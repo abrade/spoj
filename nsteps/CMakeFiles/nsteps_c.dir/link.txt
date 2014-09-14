@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/nsteps_c.dir/main.c.o  -o nsteps_c -rdynamic 

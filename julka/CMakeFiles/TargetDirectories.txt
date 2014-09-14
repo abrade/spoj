@@ -1,0 +1,2 @@
+/home/alex/spoj/julka/CMakeFiles/julka_c.dir
+/home/alex/spoj/julka/CMakeFiles/julka_cpp.dir

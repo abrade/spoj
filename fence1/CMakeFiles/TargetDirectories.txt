@@ -1,0 +1,2 @@
+/home/alex/spoj/fence1/CMakeFiles/fence_c.dir
+/home/alex/spoj/fence1/CMakeFiles/fence_cpp.dir

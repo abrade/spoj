@@ -1,0 +1,2 @@
+/home/alex/spoj/add_chars/CMakeFiles/add_char.dir
+/home/alex/spoj/add_chars/CMakeFiles/add_char_c.dir

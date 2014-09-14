@@ -1,0 +1,2 @@
+/home/alex/spoj/palin/CMakeFiles/palin_c.dir
+/home/alex/spoj/palin/CMakeFiles/palin_cpp.dir

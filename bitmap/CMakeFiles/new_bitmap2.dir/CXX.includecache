@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alex/spoj/bitmap/bitmap2.cpp
+cstdio
+-
+cstdlib
+-
+string
+-
+deque
+-
+queue
+-
+

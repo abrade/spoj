@@ -1,0 +1,2 @@
+/home/alex/spoj/SHPATH/CMakeFiles/shpath_c.dir
+/home/alex/spoj/SHPATH/CMakeFiles/shpath_cpp.dir

@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/onp_c.dir/main.c.o  -o onp_c -rdynamic 

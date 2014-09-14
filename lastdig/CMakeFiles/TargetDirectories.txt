@@ -1,0 +1,2 @@
+/home/alex/spoj/lastdig/CMakeFiles/lastdig_c.dir
+/home/alex/spoj/lastdig/CMakeFiles/lastdig_cpp.dir

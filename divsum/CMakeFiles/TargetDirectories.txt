@@ -1,0 +1,2 @@
+/home/alex/spoj/divsum/CMakeFiles/divsum_c.dir
+/home/alex/spoj/divsum/CMakeFiles/divsum_cpp.dir

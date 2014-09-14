@@ -1,0 +1,2 @@
+/home/alex/spoj/toandfro/CMakeFiles/c_toandfro.dir
+/home/alex/spoj/toandfro/CMakeFiles/toandfro.dir

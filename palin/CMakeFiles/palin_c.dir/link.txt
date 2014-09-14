@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/palin_c.dir/main.c.o  -o palin_c -rdynamic 

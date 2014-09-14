@@ -1,0 +1,2 @@
+/home/alex/spoj/samer08f/CMakeFiles/samer_c.dir
+/home/alex/spoj/samer08f/CMakeFiles/samer_cpp.dir

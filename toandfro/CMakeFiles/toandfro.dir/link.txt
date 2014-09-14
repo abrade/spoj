@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/toandfro.dir/main.cpp.o  -o toandfro -rdynamic 

@@ -1,0 +1,2 @@
+/home/alex/spoj/pour1/CMakeFiles/pour1_c.dir
+/home/alex/spoj/pour1/CMakeFiles/pour1_cpp.dir

@@ -1,0 +1,2 @@
+/home/alex/spoj/fctrl/CMakeFiles/fctrl_c.dir
+/home/alex/spoj/fctrl/CMakeFiles/fctrl_cpp.dir

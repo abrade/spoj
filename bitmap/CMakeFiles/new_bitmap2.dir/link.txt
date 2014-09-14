@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++       CMakeFiles/new_bitmap2.dir/bitmap2.cpp.o  -o new_bitmap2 -rdynamic 

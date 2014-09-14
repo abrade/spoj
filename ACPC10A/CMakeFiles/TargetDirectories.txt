@@ -1,0 +1,2 @@
+/home/alex/spoj/ACPC10A/CMakeFiles/acpc10a_c.dir
+/home/alex/spoj/ACPC10A/CMakeFiles/acpc10a_cpp.dir
