@@ -1,0 +1,2 @@
+/home/alex/spoj/MARBLES/CMakeFiles/marbles_c.dir
+/home/alex/spoj/MARBLES/CMakeFiles/marbles_cpp.dir
