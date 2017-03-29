@@ -84,7 +84,7 @@ def getIndexOfOperator(arith):
     return -1
 
 if __name__ == "__main__":
-    testcases = int(raw_input(""))
+    testcases = int(raw_input())
     for i in range(0, testcases):
-        arith = raw_input("")
+        arith = raw_input()
         calculate(arith)
